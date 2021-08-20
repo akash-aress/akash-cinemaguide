@@ -18,7 +18,7 @@ class MoviesController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -65,9 +65,9 @@ class MoviesController extends Controller
         /* Upload Movie poster after Updating fields into db */
         if ($request->file('poster')) {
             $profileImagePath = storage_path('app/public/movie-images');
-            if(!is_dir($profileImagePath))
+            if(File::isDirectory($profileImagePath))
             {
-                mkdir($profileImagePath);
+                File::makeDirectory($profileImagePath);
             }
             $fileName = time().'_'.$request->file('poster')->getClientOriginalName();
             $request->file('poster')->move($profileImagePath, $fileName);
@@ -140,7 +140,7 @@ class MoviesController extends Controller
               $path = storage_path('app/public/movie-images').'/'.$movieData->poster;
 
               if (File::exists($path)) {
-                unlink($path);
+                File::delete($path);
               }
         }
 
@@ -162,25 +162,5 @@ class MoviesController extends Controller
         $movie->delete();
         return redirect()->route('movies.index')
                         ->with('success','Movies deleted successfully');
-    }
-
-    /* Function to Upload profile images. [ THis function is not in use for now.] */
-
-    public function movieImageUpload($file) {
-
-        $input['poster'] = time() . '.' . $file->getClientOriginalExtension();
-        $profileImagePath = storage_path('app/public/movie-images');
-
-        if(!is_dir($profileImagePath))
-        {
-            mkdir($profileImagePath);
-        }
-
-        // Delete Earlier profile images
-        File::delete($profileImagePath);
-        $destinationPath = storage_path('app/public/movie-images');
-
-        $full_img->save($destinationPath . '/' . 'movie-' . $input['poster'], 80);
-        return $input['poster'];
     }
 }

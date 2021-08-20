@@ -1,9 +1,9 @@
 $(document).ready(function() {
 
   $( "#date_time" ).datetimepicker({
-    dateFormat: 'mm/dd/yy',
-    timeFormat: 'HH:mm:ss',
-    pickerTimeFormat: 'HH:mm:ss',
+    dateFormat: "mm/dd/yy",
+    timeFormat: "HH:mm:ss",
+    pickerTimeFormat: "HH:mm:ss",
   });
 
   $("#createCinemaForm").validate({

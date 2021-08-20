@@ -21,46 +21,36 @@ class Movies extends Model
         'updated_at'
     ];
 
+    // Relation table with Cinemas 
+    
     public function cinemas()
     {
         return $this->belongsToMany(Cinemas::class, 'session__times', 'cinema_id', 'id');
     }
 
+    // Formating parental rating column result 
+    
     public function getparentalRatingAttribute($value) {
 
         switch ($value) {
             case '1':
-                # code...
+                return 'G';
                 break;
             case '2':
-                # code...
+                return 'PG';
                 break;
             case '3':
-                # code...
+                return 'M';
                 break;               
-            case '1':
-                # code...
+            case '4':
+                return 'MA 15+';
                 break;
-            case '1':
-                # code...
+            case '5':
+                return 'R 18+';
                 break;
-
-            default:
-                # code...
+            case '6':
+               return 'X 18+';
                 break;
-        }
-        if ($value == '1') {
-            return 'G';
-        } else if ($value == '2') {
-            return 'PG';
-        } else if ($value == '3') {
-            return 'M';
-        } else if ($value == '4') {
-            return 'MA 15+';
-        } else if ($value == '5') {
-            return 'R 18+';
-        } else {
-            return 'X 18+';
         }
     }
 

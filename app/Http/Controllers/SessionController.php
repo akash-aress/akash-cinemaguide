@@ -53,17 +53,6 @@ class SessionController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Cinemas  $cinema
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Session_Times $session_time)
-    {
-        return view('session_time.show',compact('movie'));
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Cinemas  $cinema

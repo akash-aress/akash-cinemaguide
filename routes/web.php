@@ -16,6 +16,8 @@ use App\Http\Controllers\SessionController;
 |
 */
 
+Auth::routes();
+
 Route::group(['middleware' => ['auth']], function () {
 Route::get('/', [App\Http\Controllers\CinemasController::class, 'index'])->name('cinema');
 Route::resource('cinemas', CinemasController::class);
@@ -25,9 +27,9 @@ Route::get('cinemas/session_time/create/{cinema_id}', [App\Http\Controllers\Sess
 Route::get('cinemas/session_time/edit/{session_id}/{cinema_id}', [App\Http\Controllers\SessionController::class, 'edit'])->name('session_time.edit');
 });
 
-Auth::routes([
-  'register' => false, // Registration Routes...
-  'reset' => false, // Password Reset Routes...
-  'verify' => false, // Email Verification Routes...
-]);
+// Auth::routes([
+//   'register' => false, // Registration Routes...
+//   'reset' => false, // Password Reset Routes...
+//   'verify' => false, // Email Verification Routes...
+// ]);
 
