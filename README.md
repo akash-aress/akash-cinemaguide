@@ -20,11 +20,11 @@
             4.	Users can also add movies sessions to the cinema and update and delete them
             5.	Users can see movies assigned to particular cinemas in the list view.
             6.	Users can edit, delete session times from the listing.
-            5.  Please read the shared "CinemaGuideApplication-Documetation-Akash-20Aug2021.docx" for Application and API test access details.
+            7.  Please read the shared "CinemaGuideApplication-Documetation-Akash-20Aug2021.docx" for Application and API test access details.
 
     ## Troubleshooting
     Below are some issues that I have experienced during the application development and details about the solution that I have implemented in order to address the issue
         1.	Faced issues while assigning model relations and fetching cinema movie data. Added raw Laravel DB query to fetched cinema movie data.
 
     ## API Documentation 
-    The API documentation can be found at the link mentioned below – https://documenter.getpostman.com/view/8029345/TzzBrbnK
+    The API documentation can be found at the link mentioned below – https://documenter.getpostman.com/view/8029345/TzzDHZjD
