@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MoviesController;
+use App\Http\Controllers\CinemasController;
+use App\Http\Controllers\SessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => ['auth']], function () {
+Route::get('/', [App\Http\Controllers\CinemasController::class, 'index'])->name('cinema');
+Route::resource('cinemas', CinemasController::class);
+Route::resource('cinemas/session_time',SessionController::class);
+Route::resource('movies', MoviesController::class);
+Route::get('cinemas/session_time/create/{cinema_id}', [App\Http\Controllers\SessionController::class, 'create'])->name('session_time.create');
+Route::get('cinemas/session_time/edit/{session_id}/{cinema_id}', [App\Http\Controllers\SessionController::class, 'edit'])->name('session_time.edit');
 });
+
+Auth::routes([
+  'register' => false, // Registration Routes...
+  'reset' => false, // Password Reset Routes...
+  'verify' => false, // Email Verification Routes...
+]);
+
